@@ -29,7 +29,7 @@ pipeline {
             when { branch "master" }
             steps {
                 sh '''
-#                   docker login -u "<userid>" -p "<password>"
+                \\   docker login -u "<userid>" -p "<password>"
                     docker build --no-cache -t test-repository .
                     docker tag test-repository:latest XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
                     docker push XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
@@ -42,7 +42,7 @@ pipeline {
             when { branch "master" }
             steps {
                 sh '''
- #                  docker login -u "<userid>" -p "<password>"
+                \\  docker login -u "<userid>" -p "<password>"
                     docker pull XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
                     docker stop test-repository
                     docker rm test-repository
@@ -58,7 +58,7 @@ pipeline {
           }
             steps {
                 sh '''
-#                   docker login -u "<userid>" -p "<password>"
+                \\  docker login -u "<userid>" -p "<password>"
                     docker build --no-cache -t person .
                     docker tag test-repository:v1 XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:v1
                     docker push XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:v1
@@ -73,7 +73,7 @@ pipeline {
           }
             steps {
                 sh '''
-#                   docker login -u "<userid>" -p "<password>"
+                \\   docker login -u "<userid>" -p "<password>"
                     docker build --no-cache -t person .
                     docker tag test-repository:latest XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
                     docker push XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
