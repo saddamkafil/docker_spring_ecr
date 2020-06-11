@@ -23,6 +23,12 @@ pipeline {
             }
         }
 
+        stage('Build') {
+        steps {
+            sh 'mvn package'
+        }
+        }
+
         stage('Update Docker UAT image') {
             when { branch "master" }
             steps {
