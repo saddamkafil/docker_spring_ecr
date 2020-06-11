@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('checkout') {
+        stage('Approval') {
             steps {
                 input(id: "Deploy", message: "Deploy ${params.version}?", ok: 'Deploy')
             }
