@@ -28,32 +28,7 @@ pipeline {
             sh 'mvn package'
         }
         }
-
-        stage('Update Docker UAT image') {
-            when { branch "master" }
-            steps {
-                sh '''
-                    docker build --no-cache -t test-repository .
-                    docker tag test-repository:latest XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
-                    docker push XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
-                    docker rmi test-repository:latest
-                '''
-            }
-        }
         
-        stage('Update UAT container') {
-            when { branch "master" }
-            steps {
-                sh '''
-                    docker pull XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
-                    docker stop test-repository
-                    docker rm test-repository
-                    docker run -p 9090:9090 --name test-repository -t -d XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository
-                    docker rmi -f $(docker images -q --filter test-repository=true)
-                '''
-            }
-        }
-
         stage('Release Docker image') {
           when {
             expression { params.version == 'v1' }
