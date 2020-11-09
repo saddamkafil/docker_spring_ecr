@@ -46,7 +46,7 @@ pipeline
             }
         }
 
-        stage('Release Docker image') {
+#         stage('Release Docker image') {
           when {
             expression { params.version == 'latest' }
           }
