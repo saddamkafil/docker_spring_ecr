@@ -28,9 +28,11 @@ pipeline
         }
 
         stage('Build') {
-            steps {
-                sh 'mvn package'
-            }
+            script {
+                  def mvnhome = tool name: 'M2_HOME', type: 'maven'
+                  sh "${mvnhome}/bin/mvn --version"
+                  sh "${mvnhome}/bin/mvn clean package"
+                }
         }
         
         stage('Release Docker image') {
