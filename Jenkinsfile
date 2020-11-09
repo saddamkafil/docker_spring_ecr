@@ -1,7 +1,7 @@
 pipeline
 {
     agent {
-        label 'Lable1'
+        label 'ProdServer'
     }
     
     triggers {
