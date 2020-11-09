@@ -13,7 +13,7 @@ pipeline
     }
     stages
     {
-        stage(git install)
+        stage('git install')
         {
             steps 
             { 
