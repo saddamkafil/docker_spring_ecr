@@ -13,13 +13,7 @@ pipeline
     }
     stages
     {
-        stage('git install')
-        {
-            steps 
-            { 
-                sh 'sudo yum install git -y'
-            }
-        }
+        
         stage('checkout')
         {
             steps {
