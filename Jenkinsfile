@@ -1,4 +1,5 @@
-pipeline {
+pipeline
+{
     agent {
         label 'Lable1'
     }
@@ -10,8 +11,10 @@ pipeline {
     parameters {
         choice(name: 'version', choices: 'v1\nlatest', description: 'Docker Version image ')
     }
-    stages {
-        stage('checkout') {
+    stages
+    {
+        stage('checkout')
+        {
             steps {
                 git 'https://github.com/kaza514/docker_spring_ecr.git'
             }
@@ -24,9 +27,9 @@ pipeline {
         }
 
         stage('Build') {
-        steps {
-            sh 'mvn package'
-        }
+            steps {
+                sh 'mvn package'
+            }
         }
         
         stage('Release Docker image') {
