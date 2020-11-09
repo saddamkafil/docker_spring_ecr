@@ -46,19 +46,7 @@ pipeline
             }
         }
 
-#         stage('Release Docker image') {
-          when {
-            expression { params.version == 'latest' }
-          }
-            steps {
-                sh '''
-                    docker build --no-cache -t person .
-                    docker tag test-repository:latest XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
-                    docker push XXXXXXXXXX.dkr.ecr.ap-southeast-2.amazonaws.com/test-repository:latest
-                    docker rmi $(docker images -f “test-repository=true” -q)
-               '''
-            }
-        }
+    }
 
     }        
 }
